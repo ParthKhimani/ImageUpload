@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <style>
+            img{
+                width: 100%;
+                height: 100%;
+            }
+            td{
+                width: 15%;
+            }
+        </style>
+</head>
+
+<body>
+    <center>
+        <h1>Customers List</h1>
+        <table style="width: 75%;" class="table table-striped">
+            <thead>
+                <td>Image</td>
+                <td>Name</td>
+                <td>Email</td>
+                <td>Phone</td>
+            </thead>
+            <tbody>
+                <% for(let i=0; i<data.length; i++) { %>
+                    <tr>
+                        <td>
+                            <img src="<%= data[i].imageUrl %>" alt="Image Not Found!">
+                        </td>
+                        <td>
+                            <%= data[i].name %>
+                        </td>
+                        <td>
+                            <%= data[i].emailId %>
+                        </td>
+                        <td>
+                            <%= data[i].contactNumber %>
+                        </td>
+                      
+                        <!-- <td>
+                            <form action="/updateCustomerData" method="post">
+                                <input type="hidden" name="update" value="<%= data[i].id %>">
+                                <button type="submit">Update</button>
+                            </form>
+                        </td> -->
+                        <td>
+                            <form action="/deleteCustomerData" method="post">
+                                <input type="hidden" name="delete" value="<%= data[i].id %>">
+                                <button type="submit">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                    <% } %>
+            </tbody>
+        </table>
+        <form action="/" method="post" style="padding-top: 10px;">
+            <button type="submit">
+                Go to Home Page
+            </button>
+        </form>
+    </center>
+</body>
+
+</html>
